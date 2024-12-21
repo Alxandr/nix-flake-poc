@@ -12,10 +12,15 @@ let
         args = inputs // {
           inherit self;
         };
-        outputs = flake-parts-lib.mkFlake {
-          inputs = args;
-          moduleLocation = path;
-        } (import path);
+        outputs =
+          flake-parts-lib.mkFlake
+            {
+              inputs = args;
+              moduleLocation = path;
+            }
+            {
+              imports = [ path ];
+            };
       in
       outputs
       // {
@@ -25,5 +30,5 @@ let
     ));
 in
 {
-  inherit lib flake-parts-lib mkStage;
+  inherit mkStage;
 }
