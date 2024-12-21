@@ -57,11 +57,9 @@
     in
     rec {
       base = lib.mkStage ./00-base.nix {
-        inherit flake;
         inherit (flake) inputs;
       };
       next = lib.mkStage ./01-next.nix {
-        inherit flake;
         inputs = flake.inputs // {
           inherit base;
         };

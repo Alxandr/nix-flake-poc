@@ -5,7 +5,7 @@ let
 
   mkStage =
     path:
-    { flake, inputs }:
+    { inputs }:
     (lib.fixedPoints.fix (
       self:
       let
